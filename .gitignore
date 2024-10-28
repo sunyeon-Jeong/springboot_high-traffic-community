@@ -37,10 +37,7 @@ out/
 .vscode/
 
 # mallang setting
-gradle
-test
 build.gradle
-gradlew
-gradlew.bat
-settings.gradle
-**/application.properties
+
+src/main/resources/*.properties
+src/main/resources/*.yml
