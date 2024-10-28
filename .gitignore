@@ -35,3 +35,12 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# mallang setting
+gradle
+test
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
+**/application.properties
