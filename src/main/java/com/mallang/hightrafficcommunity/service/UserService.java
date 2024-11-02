@@ -3,7 +3,6 @@ package com.mallang.hightrafficcommunity.service;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface UserService {
 
     // 회원가입

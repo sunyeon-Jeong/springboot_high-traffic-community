@@ -17,7 +17,7 @@ public class MysqlConfig {
     // Mybatis가 데이터베이스와의 연결을 관리
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 
-        // Mybatis와 Sprin 통합 FactoryBean
+        // Mybatis와 Spring 통합 FactoryBean
         final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         // Mybatis -> 데이터베이스 연결
         sqlSessionFactoryBean.setDataSource(dataSource);

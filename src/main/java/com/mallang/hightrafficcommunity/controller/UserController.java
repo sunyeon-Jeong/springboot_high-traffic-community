@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 public class UserController {
 
-    private final UserServiceImpl userServceImpl;
+    // 의존해야하는 객체 final로 선언
+    private final UserServiceImpl userServiceImpl;
 
+    // 생성자를 통해 객체 DI 주입
     @Autowired
-    public UserController(UserServiceImpl userServceImpl) {
-        this.userServceImpl = userServceImpl;
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
 }
