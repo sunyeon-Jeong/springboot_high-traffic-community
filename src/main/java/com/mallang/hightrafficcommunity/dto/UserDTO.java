@@ -25,4 +25,12 @@ public class UserDTO {
     private Date modifyTime;
     private Status status;
 
+    /* 회원가입 > 사용자 입력값 null validation */
+    public static boolean signupRequestDataNullValidation(UserDTO userDTO) {
+
+        return userDTO.getUsername() == null || userDTO.getPassword() == null
+                    || userDTO.getNickName() == null;
+
+    }
+
 }
