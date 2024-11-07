@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE
+        mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mallang.hightrafficcommunity.mapper.UserMapper">
+
+    <!--  아이디 중복체크 -->
+    <select id = "isDuplicated" resultType = "int">
+        SELECT
+                    COUNT(id)
+        FROM
+                    user
+        WHERE
+                    username = #{username}
+    </select>
+
+    <!--  회원가입 -->
+    <insert id="signup" parameterType="com.mallang.hightrafficcommunity.dto.UserDTO">
+        INSERT INTO user (
+                            username
+                            , password
+                            , nick_name
+                            , is_admin
+                            , is_with_draw
+                            , status
+                            , create_time
+                            , modify_time
+        ) values (
+                            #{username}
+                            , #{password}
+                            , #{nickName}
+                            , #{isAdmin}
+                            , #{isWithDraw}
+                            , #{status}
+                            , #{createTime}
+                            , #{modifyTime}
+        )
+    </insert>
+
+</mapper>
