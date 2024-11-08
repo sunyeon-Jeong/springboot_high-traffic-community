@@ -15,4 +15,9 @@ public interface UserMapper {
     // 회원가입
     int signup(UserDTO userDTO);
 
+    // 로그인
+    public UserDTO getUserInfo(@Param("username") String username,
+                                                @Param("encryptPassword") String encryptPassword,
+                                                @Param("nickName") String nickName);
+
 }

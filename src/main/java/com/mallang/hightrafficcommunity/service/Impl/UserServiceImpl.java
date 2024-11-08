@@ -59,4 +59,18 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /*  로그인 */
+    @Override
+    public UserDTO login(String username, String password, String nickName) {
+
+        // 비밀번호 암호화(SHA256)
+        String encryptPassword = SHA256Util.encryptSHA256(password);
+
+        // DB 조회 후, controller로 dto 반환
+        UserDTO userInfo = userMapper.getUserInfo(username, encryptPassword, nickName);
+
+        return userInfo;
+
+    }
+
 }

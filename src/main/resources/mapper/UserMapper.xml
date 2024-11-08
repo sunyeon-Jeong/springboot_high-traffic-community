@@ -38,4 +38,23 @@
         )
     </insert>
 
+    <!-- 로그인 -->
+    <select id = "getUserInfo" resultType = "com.mallang.hightrafficcommunity.dto.UserDTO">
+        SELECT
+                    id
+                    , username
+                    , password
+                    , nick_name
+                    , is_with_draw
+                    , status
+                    , create_time
+        FROM
+                    user
+        WHERE
+                    username = #{username}
+        AND     password = #{encryptPassword}
+        AND     nick_name = #{nickName}
+        AND     status != 'DELETED'
+    </select>
+
 </mapper>
