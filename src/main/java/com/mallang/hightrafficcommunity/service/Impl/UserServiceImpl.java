@@ -100,4 +100,21 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /* 회원탈퇴 */
+    @Override
+    public void deleteUser(String username, String password) {
+
+        String encryptPassword = SHA256Util.encryptSHA256(password);
+
+        UserDTO userInfo = userMapper.findByUsernameAndPassword(username, encryptPassword);
+
+        if (userInfo != null) {
+            userMapper.deleteUser(userInfo.getUsername());
+        } else {
+            log.error("deleteUser ERROR! {}", userInfo);
+            throw new RuntimeException("deleteUser ERROR! 회원탈퇴 메서드를 확인해주세요\n" + "Params : " + userInfo);
+        }
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.mallang.hightrafficcommunity.controller;
 
 import com.mallang.hightrafficcommunity.dto.UserDTO;
+import com.mallang.hightrafficcommunity.dto.request.DeleteUserRequestDTO;
 import com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO;
 import com.mallang.hightrafficcommunity.dto.request.UpdatePasswordRequestDTO;
 import com.mallang.hightrafficcommunity.dto.response.LoginResponseDTO;
@@ -131,6 +132,27 @@ public class UserController {
     public void logout(HttpSession httpSession) {
 
         HttpSessionUtil.clear(httpSession);
+
+    }
+
+    /* 회원탈퇴 */
+    @DeleteMapping("delete-user")
+    public ResponseEntity<LoginResponseDTO> deleteUser(@RequestBody DeleteUserRequestDTO deleteUserRequestDTO,
+                                                                                            HttpSession httpSession) {
+
+        ResponseEntity<LoginResponseDTO> deleteUserResult = null;
+
+        String username = HttpSessionUtil.getLoginMemberUsername(httpSession);
+
+        try {
+            userServiceImpl.deleteUser(username, deleteUserRequestDTO.getPassword());
+            deleteUserResult = new ResponseEntity<LoginResponseDTO>(loginResponseDTO, HttpStatus.OK);
+        } catch (RuntimeException exception) {
+            log.info("deleteUser 실패");
+            deleteUserResult = FAIL_RESPONSE;
+        }
+
+        return deleteUserResult;
 
     }
 

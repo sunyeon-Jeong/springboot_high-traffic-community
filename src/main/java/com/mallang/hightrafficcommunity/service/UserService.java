@@ -20,4 +20,7 @@ public interface UserService {
     // 비밀번호 변경
     void updatePassword(String username, String originPassword, String modifiedPassword);
 
+    // 회원탈퇴
+    void deleteUser(String username, String password);
+
 }

@@ -117,4 +117,13 @@
                     username = #{username}
     </update>
 
+    <!-- 회원탈퇴 -->
+    <delete id = "deleteUser">
+        DELETE
+        FROM
+                    user
+        WHERE
+                    username = #{username}
+    </delete>
+
 </mapper>

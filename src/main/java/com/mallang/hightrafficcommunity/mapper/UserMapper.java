@@ -23,11 +23,14 @@ public interface UserMapper {
     // 로그인 후 회원정보 조회
     public UserDTO getUserInfo(@Param("username") String username);
 
-    // 비밀번호 변경 > 기존 비밀번호를 통한 회원정보 조회
+    // 비밀번호 변경 > 기존 비밀번호를 통한 회원정보 조회 & 회원탈퇴
     public UserDTO findByUsernameAndPassword(@Param("username") String username,
                                                                             @Param("encryptOriginPassword") String encryptOriginPassword);
 
     // 비밀번호 변경
     public int updatePassword(UserDTO userDTO);
+
+    // 회원탈퇴
+    int deleteUser(@Param("username") String username);
 
 }
