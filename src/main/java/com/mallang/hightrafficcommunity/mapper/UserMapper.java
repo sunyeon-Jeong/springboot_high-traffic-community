@@ -16,8 +16,11 @@ public interface UserMapper {
     int signup(UserDTO userDTO);
 
     // 로그인
-    public UserDTO getUserInfo(@Param("username") String username,
-                                                @Param("encryptPassword") String encryptPassword,
-                                                @Param("nickName") String nickName);
+    public UserDTO login(@Param("username") String username,
+                                    @Param("encryptPassword") String encryptPassword,
+                                    @Param("nickName") String nickName);
+
+    // 로그인 후 회원정보 조회
+    public UserDTO getUserInfo(@Param("username") String username);
 
 }

@@ -3,6 +3,7 @@ package com.mallang.hightrafficcommunity.controller;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO;
 import com.mallang.hightrafficcommunity.dto.response.LoginResponseDTO;
+import com.mallang.hightrafficcommunity.dto.response.UserInfoResponseDTO;
 import com.mallang.hightrafficcommunity.service.Impl.UserServiceImpl;
 import com.mallang.hightrafficcommunity.util.HttpSessionUtil;
 import jakarta.servlet.http.HttpSession;
@@ -80,6 +81,23 @@ public class UserController {
         }
 
         return HttpStatus.OK;
+
+    }
+
+    /*  로그인 후 회원정보 조회 */
+    @GetMapping("user-info")
+    public UserInfoResponseDTO getUserInfo(HttpSession httpSession) {
+
+        String username = HttpSessionUtil.getLoginMemberUsername(httpSession);
+
+        if (username == null) {
+            username = HttpSessionUtil.getLoginAdminUsername(httpSession);
+        }
+
+        // username -> db 조회 후 dto에 저장
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        return new UserInfoResponseDTO(userInfo);
 
     }
 

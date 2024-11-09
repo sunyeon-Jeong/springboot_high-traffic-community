@@ -14,4 +14,7 @@ public interface UserService {
     // 로그인
     UserDTO login(String username, String password, String nickName);
 
+    // 로그인 후 회원정보 조회
+    UserDTO getUserInfo(String username);
+
 }

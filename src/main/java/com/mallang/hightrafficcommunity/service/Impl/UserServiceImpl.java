@@ -67,9 +67,17 @@ public class UserServiceImpl implements UserService {
         String encryptPassword = SHA256Util.encryptSHA256(password);
 
         // DB 조회 후, controller로 dto 반환
-        UserDTO userInfo = userMapper.getUserInfo(username, encryptPassword, nickName);
+        UserDTO userInfo = userMapper.login(username, encryptPassword, nickName);
 
         return userInfo;
+
+    }
+
+    /*  로그인 후 회원정보 조회 */
+    @Override
+    public UserDTO getUserInfo(String username) {
+
+        return userMapper.getUserInfo(username);
 
     }
 
