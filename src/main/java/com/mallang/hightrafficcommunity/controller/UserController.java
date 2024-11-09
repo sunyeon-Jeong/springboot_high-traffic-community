@@ -126,4 +126,12 @@ public class UserController {
 
     }
 
+    /* 로그아웃 */
+    @PutMapping("logout")
+    public void logout(HttpSession httpSession) {
+
+        HttpSessionUtil.clear(httpSession);
+
+    }
+
 }
