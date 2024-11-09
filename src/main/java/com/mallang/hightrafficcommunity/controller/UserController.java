@@ -2,12 +2,14 @@ package com.mallang.hightrafficcommunity.controller;
 
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO;
+import com.mallang.hightrafficcommunity.dto.request.UpdatePasswordRequestDTO;
 import com.mallang.hightrafficcommunity.dto.response.LoginResponseDTO;
 import com.mallang.hightrafficcommunity.dto.response.UserInfoResponseDTO;
 import com.mallang.hightrafficcommunity.service.Impl.UserServiceImpl;
 import com.mallang.hightrafficcommunity.util.HttpSessionUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -98,6 +100,29 @@ public class UserController {
         UserDTO userInfo = userServiceImpl.getUserInfo(username);
 
         return new UserInfoResponseDTO(userInfo);
+
+    }
+
+    /* 비밀번호 변경 */
+    @PatchMapping("update-password")
+    public ResponseEntity<LoginResponseDTO> updatePassword(@RequestBody UpdatePasswordRequestDTO updatePasswordRequestDTO,
+                                                                                                    HttpSession httpSession) {
+
+        ResponseEntity<LoginResponseDTO> updatePasswordResult = null;
+
+        String username = HttpSessionUtil.getLoginMemberUsername(httpSession);
+        String originPassword = updatePasswordRequestDTO.getOriginPassword();
+        String modifiedPassword = updatePasswordRequestDTO.getModifiedPassword();
+
+        try {
+            userServiceImpl.updatePassword(username, originPassword, modifiedPassword);
+            ResponseEntity.ok(new ResponseEntity<LoginResponseDTO>(loginResponseDTO, HttpStatus.OK));
+        } catch (IllegalArgumentException exception) {
+            log.error("updatePassword 실패", exception);
+            updatePasswordResult = FAIL_RESPONSE;
+        }
+
+        return updatePasswordResult;
 
     }
 

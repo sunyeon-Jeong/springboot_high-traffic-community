@@ -80,10 +80,41 @@
                     , is_with_draw
                     , status
                     , create_time
+                    , modify_time
         FROM
                     user
         WHERE
                     username = #{username}
     </select>
+
+    <!-- 비밀번호 변경 > 기존 비밀번호를 통한 회원정보 조회 -->
+    <select id = "findByUsernameAndPassword" resultMap = "userResultMap">
+        SELECT
+                    id
+                    , username
+                    , password
+                    , nick_name
+                    , is_with_draw
+                    , status
+                    , create_time
+                    , modify_time
+        FROM
+                    user
+        WHERE
+                    username = #{username}
+        AND     password = #{encryptOriginPassword}
+        AND     status != 'DELETED'
+    </select>
+
+    <!-- 비밀번호 변경 -->
+    <update id = "updatePassword" parameterType = "com.mallang.hightrafficcommunity.dto.UserDTO">
+        UPDATE
+                    user
+        SET
+                    password = #{password},
+                    modify_time = #{modifyTime}
+        WHERE
+                    username = #{username}
+    </update>
 
 </mapper>
