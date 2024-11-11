@@ -1,0 +1,31 @@
+package com.mallang.hightrafficcommunity.controller;
+
+import com.mallang.hightrafficcommunity.aop.LoginCheck;
+import com.mallang.hightrafficcommunity.dto.CategoryDTO;
+import com.mallang.hightrafficcommunity.service.Impl.CategoryServiceImpl;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/categories")
+@Log4j2
+public class CategoryController {
+
+    private CategoryServiceImpl categoryServiceImpl;
+
+    public CategoryController(CategoryServiceImpl categoryServiceImpl) {
+        this.categoryServiceImpl = categoryServiceImpl;
+    }
+
+    /* 카테고리 등록 */
+    @PostMapping("create-category")
+    @ResponseStatus(HttpStatus.CREATED)
+    @LoginCheck(userType = LoginCheck.UserType.ADMIN)
+    public void createCategory(String username, @RequestBody CategoryDTO categoryDTO) {
+
+        categoryServiceImpl.createCategory(username, categoryDTO);
+
+    }
+
+}
