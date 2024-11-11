@@ -77,6 +77,7 @@
                     , username
                     , password
                     , nick_name
+                    , is_admin
                     , is_with_draw
                     , status
                     , create_time

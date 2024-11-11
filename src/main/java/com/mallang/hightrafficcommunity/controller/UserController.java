@@ -1,5 +1,6 @@
 package com.mallang.hightrafficcommunity.controller;
 
+import com.mallang.hightrafficcommunity.aop.LoginCheck;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.request.DeleteUserRequestDTO;
 import com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO;
@@ -106,12 +107,13 @@ public class UserController {
 
     /* 비밀번호 변경 */
     @PatchMapping("update-password")
-    public ResponseEntity<LoginResponseDTO> updatePassword(@RequestBody UpdatePasswordRequestDTO updatePasswordRequestDTO,
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<LoginResponseDTO> updatePassword(String usernameAop, @RequestBody UpdatePasswordRequestDTO updatePasswordRequestDTO,
                                                                                                     HttpSession httpSession) {
 
         ResponseEntity<LoginResponseDTO> updatePasswordResult = null;
 
-        String username = HttpSessionUtil.getLoginMemberUsername(httpSession);
+        String username = usernameAop;
         String originPassword = updatePasswordRequestDTO.getOriginPassword();
         String modifiedPassword = updatePasswordRequestDTO.getModifiedPassword();
 
