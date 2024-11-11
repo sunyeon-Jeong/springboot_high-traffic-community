@@ -32,7 +32,14 @@ public class CategoryServiceImpl implements CategoryService {
     /* 카테고리 수정 */
     @Override
     public void updateCategory(CategoryDTO categoryDTO) {
-        //
+
+        if (categoryDTO != null) {
+            categoryMapper.updateCategory(categoryDTO);
+        } else {
+            log.error("update Category ERROR! {}", categoryDTO);
+            throw new RuntimeException("update Category ERROR! 카테고리 수정 메서드를 확인해주세요\n" + "Params : " + categoryDTO);
+        }
+
     }
 
     /* 카테고리 삭제 */
