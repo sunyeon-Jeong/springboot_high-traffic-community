@@ -19,7 +19,7 @@ public class UserDTO {
     private String username;
     private String password;
     private String nickName;
-    private boolean isAdmin;
+    private int isAdmin;
     private boolean isWithDraw;
     private Date createTime;
     private Date modifyTime;
@@ -28,7 +28,7 @@ public class UserDTO {
     /*  생성자 */
     public UserDTO(){}
 
-    public UserDTO(String username, String password, String nickName, boolean isAdmin,
+    public UserDTO(String username, String password, String nickName, int isAdmin,
                             boolean isWithDraw, Date createTime, Date modifyTime, Status status) {
         this.username = username;
         this.password = password;
