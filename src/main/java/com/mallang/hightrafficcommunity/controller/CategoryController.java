@@ -44,6 +44,16 @@ public class CategoryController {
 
     }
 
+    /* 카테고리 삭제 */
+    @DeleteMapping("{id}")
+    @LoginCheck(userType = LoginCheck.UserType.ADMIN)
+    public void deleteCategory(String username,
+                                                @PathVariable(name = "id") int id) {
+
+        categoryServiceImpl.deleteCategory(id);
+
+    }
+
     /* -----CategoryRequest----- */
     // CategoryController에서만 사용될 DTO이므로 외부 재사용 X -> 클래스 내부에 선언
     @Getter

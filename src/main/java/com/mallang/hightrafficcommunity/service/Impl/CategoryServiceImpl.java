@@ -45,7 +45,14 @@ public class CategoryServiceImpl implements CategoryService {
     /* 카테고리 삭제 */
     @Override
     public void deleteCategory(int id) {
-        //
+
+        if (id != 0) {
+            categoryMapper.deleteCategory(id);
+        } else {
+            log.error("deleteCategory ERROR! {}", id);
+            throw new RuntimeException("deleteCategory ERROR! 카테고리 삭제 메서드를 확인해주세요\n" + "Params : " + id);
+        }
+
     }
 
 }

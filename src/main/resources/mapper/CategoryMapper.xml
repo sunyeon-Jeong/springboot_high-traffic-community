@@ -24,4 +24,12 @@
                     id = #{id}
     </update>
 
+    <!-- 카테고리 삭제 -->
+    <delete id = "deleteCategory">
+        DELETE FROM
+                                category
+        WHERE
+                                id = #{id}
+    </delete>
+
 </mapper>
