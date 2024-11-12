@@ -15,4 +15,7 @@ public interface PostService {
     // 게시글 수정
     void updatePost(PostDTO updatePostDTO);
 
+    // 게시글 삭제
+    void deletePost(int userId, int id);
+
 }

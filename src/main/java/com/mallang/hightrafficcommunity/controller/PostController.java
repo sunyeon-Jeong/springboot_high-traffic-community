@@ -83,7 +83,23 @@ public class PostController {
 
     }
 
-    /* -----PostRequest----- */
+    /* 게시글 삭제 */
+    @DeleteMapping("{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<PostDTO>> deletePost(String username,
+                                                                                                            @PathVariable(name = "id") int id,
+                                                                                                            @RequestBody DeletePostRequest deletePostRequest) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        postServiceImpl.deletePost(userInfo.getId(), id);
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deletePost", deletePostRequest);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* -----UpdatePostRequest----- */
     @Getter
     @Setter
     private static class UpdatePostRequest {
@@ -91,6 +107,14 @@ public class PostController {
         private String contents;
         private int fileId;
         private int categoryId;
+    }
+
+    /* -----DeletePostRequest ----- */
+    @Getter
+    @Setter
+    private static class DeletePostRequest {
+        private int id;
+        private String username;
     }
 
 }

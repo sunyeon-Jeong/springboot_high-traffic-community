@@ -17,4 +17,7 @@ public interface PostMapper {
     // 게시글 수정
     void updatePost(PostDTO updatePostDTO);
 
+    // 게시글 삭제
+    void deletePost(int id);
+
 }

@@ -62,4 +62,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 게시글 삭제 */
+    @Override
+    public void deletePost(int userId, int id) {
+
+        if (userId != 0 && id != 0) {
+            postMapper.deletePost(id);
+        } else {
+            log.error("deletePost ERROR! {}", id);
+            throw new RuntimeException("deletePost ERROR! 게시글 삭제 메서드를 확인해주세요\n" + "Params : " + id);
+        }
+
+    }
+
 }
