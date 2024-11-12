@@ -14,4 +14,7 @@ public interface PostMapper {
     // 사용자 게시글 조회
     List<PostDTO> getUserPosts(int userId);
 
+    // 게시글 수정
+    void updatePost(PostDTO updatePostDTO);
+
 }

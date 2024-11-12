@@ -49,4 +49,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 게시글 수정 */
+    @Override
+    public void updatePost(PostDTO updatePostDTO) {
+
+        if (updatePostDTO != null && updatePostDTO.getId() != 0 && updatePostDTO.getUserId() != 0) {
+            postMapper.updatePost(updatePostDTO);
+        } else {
+            log.error("updatePost ERROR! {}", updatePostDTO);
+            throw new RuntimeException("updatePost ERROR! 게시글 수정 메서드를 확인해주세요\n" + "Params : " + updatePostDTO);
+        }
+
+    }
+
 }

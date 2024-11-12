@@ -61,4 +61,20 @@
                     user_id = #{userId}
     </select>
 
+    <!-- 게시글 수정 -->
+    <update id = "updatePost" parameterType = "com.mallang.hightrafficcommunity.dto.PostDTO">
+        UPDATE
+                    post
+        SET
+                    title = #{title}
+                    , is_admin = #{isAdmin}
+                    , contents = #{contents}
+                    , file_id = #{fileId}
+                    , user_id = #{userId}
+                    , category_id = #{categoryId}
+                    , modify_time = #{modifyTime}
+        WHERE
+                    id = #{id}
+    </update>
+
 </mapper>
