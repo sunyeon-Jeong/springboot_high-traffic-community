@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE
+        mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mallang.hightrafficcommunity.mapper.PostMapper">
+
+    <!-- resultMap -->
+    <resultMap id = "postResultMap" type = "com.mallang.hightrafficcommunity.dto.PostDTO">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="isAdmin" column="is_admin"/>
+        <result property="contents" column="contents"/>
+        <result property="views" column="views"/>
+        <result property="fileId" column="file_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+    <!-- 게시글 등록 -->
+    <insert id = "createPost" parameterType = "com.mallang.hightrafficcommunity.dto.PostDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO post (
+                            title
+                            , is_admin
+                            , contents
+                            , views
+                            , file_id
+                            , create_time
+                            , user_id
+                            , category_id
+        ) VALUES (
+                            #{title}
+                            , #{isAdmin}
+                            , #{contents}
+                            , #{views}
+                            , #{fileId}
+                            , #{createTime}
+                            , #{userId}
+                            , #{categoryId}
+        )
+    </insert>
+
+    <!-- 사용자 게시글 조회 -->
+    <select id = "getUserPosts" resultMap = "postResultMap">
+        SELECT
+                    id
+                    , title
+                    , is_admin
+                    , contents
+                    , views
+                    , file_id
+                    , user_id
+                    , category_id
+                    , create_time
+                    , modify_time
+        FROM
+                    post
+        WHERE
+                    user_id = #{userId}
+    </select>
+
+    <!-- 게시글 수정 -->
+    <update id = "updatePost" parameterType = "com.mallang.hightrafficcommunity.dto.PostDTO">
+        UPDATE
+                    post
+        SET
+                    title = #{title}
+                    , is_admin = #{isAdmin}
+                    , contents = #{contents}
+                    , file_id = #{fileId}
+                    , user_id = #{userId}
+                    , category_id = #{categoryId}
+                    , modify_time = #{modifyTime}
+        WHERE
+                    id = #{id}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id = "deletePost">
+        DELETE FROM
+                                post
+        WHERE
+                                id = #{id}
+    </delete>
+
+</mapper>
