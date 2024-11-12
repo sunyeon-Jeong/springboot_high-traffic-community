@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Log4j2
@@ -36,6 +37,15 @@ public class PostServiceImpl implements PostService {
             log.error("createPost ERROR! {}", postDTO);
             throw new RuntimeException("createPost ERROR! 게시글 등록 메서드를 확인해주세요\n" + "Params : " + postDTO);
         }
+
+    }
+
+    /* 사용자 게시글 조회 */
+    @Override
+    public List<PostDTO> getUserPosts(int userId) {
+
+        List<PostDTO> postDtoList = postMapper.getUserPosts(userId);
+        return postDtoList;
 
     }
 

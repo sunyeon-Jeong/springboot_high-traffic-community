@@ -9,4 +9,7 @@ public interface PostService {
     // 게시글 등록
     void createPost(String username, PostDTO postDTO);
 
+    // 사용자 게시글 조회
+    List<PostDTO> getUserPosts(int userId);
+
 }

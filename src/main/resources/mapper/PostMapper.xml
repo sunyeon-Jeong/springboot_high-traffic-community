@@ -5,6 +5,20 @@
 
 <mapper namespace = "com.mallang.hightrafficcommunity.mapper.PostMapper">
 
+    <!-- resultMap -->
+    <resultMap id = "postResultMap" type = "com.mallang.hightrafficcommunity.dto.PostDTO">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="isAdmin" column="is_admin"/>
+        <result property="contents" column="contents"/>
+        <result property="views" column="views"/>
+        <result property="fileId" column="file_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
     <!-- 게시글 등록 -->
     <insert id = "createPost" parameterType = "com.mallang.hightrafficcommunity.dto.PostDTO" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO post (
@@ -27,5 +41,24 @@
                             , #{categoryId}
         )
     </insert>
+
+    <!-- 사용자 게시글 조회 -->
+    <select id = "getUserPosts" resultMap = "postResultMap">
+        SELECT
+                    id
+                    , title
+                    , is_admin
+                    , contents
+                    , views
+                    , file_id
+                    , user_id
+                    , category_id
+                    , create_time
+                    , modify_time
+        FROM
+                    post
+        WHERE
+                    user_id = #{userId}
+    </select>
 
 </mapper>
