@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE
+        mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mallang.hightrafficcommunity.mapper.PostSearchMapper">
+
+    <!-- resultMap -->
+    <resultMap id = "postSearchResultMap" type = "com.mallang.hightrafficcommunity.dto.PostDTO">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="isAdmin" column="is_admin"/>
+        <result property="contents" column="contents"/>
+        <result property="views" column="views"/>
+        <result property="fileId" column="file_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+    <!-- 게시글 검색 -->
+    <select id = "getSearchPosts" resultMap = "postSearchResultMap">
+        SELECT
+                    id
+                    , title
+                    , is_admin
+                    , contents
+                    , views
+                    , file_id
+                    , user_id
+                    , category_id
+                    , create_time
+                    , modify_time
+        FROM
+                    post
+        WHERE
+                    1=1
+                    <if test = "title != null and title != ''">
+                        AND title LIKE CONCAT(#{title}, '%')
+                    </if>
+                    <if test = "contents != null and contents != ''">
+                        AND contents LIKE CONCAT(#{contents}, '%')
+                    </if>
+                    <if test = "categoryId != 0">
+                        AND category_id = #{categoryId}
+                    </if>
+                    <if test = "sortStatus.toString() == 'NEWEST'">
+                        ORDER BY create_time DESC
+                    </if>
+                    <if test = "sortStatus.toString() == 'OLDEST'">
+                        ORDER BY create_time ASC
+                    </if>
+                    <if test = "sortStatus.toString() == 'CATEGORIES'">
+                        ORDER BY category_id
+                    </if>
+    </select>
+
+</mapper>
