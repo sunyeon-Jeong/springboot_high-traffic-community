@@ -94,4 +94,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 게시글 댓글 수정 */
+    @Override
+    public void updateComment(CommentDTO commentDTO) {
+
+        if (commentDTO != null) {
+            commentMapper.updateComment(commentDTO);
+        } else {
+            log.error("updateComment ERROR! {}", commentDTO);
+            throw new RuntimeException("updateComment ERROR! 게시글 댓글 수정 메서드를 확인해주세요\n" + "Params : " + commentDTO);
+        }
+
+    }
+
 }

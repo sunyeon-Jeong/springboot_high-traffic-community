@@ -133,4 +133,23 @@ public class PostController {
 
     }
 
+    /* 게시글 댓글 수정 */
+    @PatchMapping("/comments/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> updateComment(String username,
+                                                                                                                            @PathVariable(name = "id") int id,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            commentDTO.setId(id);
+            postServiceImpl.updateComment(commentDTO);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "updateComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
 }

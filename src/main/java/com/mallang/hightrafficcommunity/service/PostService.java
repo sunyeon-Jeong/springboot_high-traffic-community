@@ -23,4 +23,7 @@ public interface PostService {
     // 게시글 댓글 등록
     void createComment(CommentDTO commentDTO);
 
+    // 게시글 댓글 수정
+    void updateComment(CommentDTO commentDTO);
+
 }

@@ -18,4 +18,15 @@
         )
     </insert>
 
+    <!-- 게시글 댓글 수정 -->
+    <update id = "updateComment" parameterType = "com.mallang.hightrafficcommunity.dto.CommentDTO">
+        UPDATE
+                    comment
+        SET
+                    contents = #{contents}
+                    , sub_comment_id = #{subCommentId}
+        WHERE
+                    id = #{id}
+    </update>
+
 </mapper>
