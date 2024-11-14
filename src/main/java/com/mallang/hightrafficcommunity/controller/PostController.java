@@ -1,6 +1,7 @@
 package com.mallang.hightrafficcommunity.controller;
 
 import com.mallang.hightrafficcommunity.aop.LoginCheck;
+import com.mallang.hightrafficcommunity.dto.CommentDTO;
 import com.mallang.hightrafficcommunity.dto.PostDTO;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.response.CommonResponse;
@@ -115,6 +116,21 @@ public class PostController {
     private static class DeletePostRequest {
         private int id;
         private String username;
+    }
+
+    /* -----Comments----- */
+    /* 게시글 댓글 등록 */
+    @PostMapping("/comments/create-comment")
+    @ResponseStatus(HttpStatus.CREATED)
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> createComment(String username,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        postServiceImpl.createComment(commentDTO);
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "createComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
     }
 
 }
