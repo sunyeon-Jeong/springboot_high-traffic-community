@@ -12,4 +12,7 @@ public interface CommentMapper {
     // 게시글 댓글 수정
     void updateComment(CommentDTO commentDTO);
 
+    // 게시글 댓글 삭제
+    void deleteComment(int id);
+
 }

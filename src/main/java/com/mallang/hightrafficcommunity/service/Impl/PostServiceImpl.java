@@ -107,4 +107,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 게시글 댓글 삭제 */
+    @Override
+    public void deleteComment(int userId, int id) {
+
+        if (userId != 0 && id != 0) {
+            commentMapper.deleteComment(id);
+        } else {
+            log.error("deleteComment ERROR! {}", id);
+            throw new RuntimeException("deleteComment ERROR! 게시글 댓글 삭제 메서드를 확인해주세요\n" + "Params : " + id);
+        }
+
+    }
+
 }

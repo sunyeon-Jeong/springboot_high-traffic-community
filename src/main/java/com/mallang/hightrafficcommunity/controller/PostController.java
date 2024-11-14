@@ -120,7 +120,7 @@ public class PostController {
 
     /* -----Comments----- */
     /* 게시글 댓글 등록 */
-    @PostMapping("/comments/create-comment")
+    @PostMapping("comments/create-comment")
     @ResponseStatus(HttpStatus.CREATED)
     @LoginCheck(userType = LoginCheck.UserType.MEMBER)
     public ResponseEntity<CommonResponse<CommentDTO>> createComment(String username,
@@ -134,7 +134,7 @@ public class PostController {
     }
 
     /* 게시글 댓글 수정 */
-    @PatchMapping("/comments/{id}")
+    @PatchMapping("comments/{id}")
     @LoginCheck(userType = LoginCheck.UserType.MEMBER)
     public ResponseEntity<CommonResponse<CommentDTO>> updateComment(String username,
                                                                                                                             @PathVariable(name = "id") int id,
@@ -148,6 +148,24 @@ public class PostController {
         }
 
         CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "updateComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* 게시글 댓글 삭제 */
+    @DeleteMapping("comments/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> deleteComment(String username,
+                                                                                                                            @PathVariable(name = "id") int id,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            postServiceImpl.deleteComment(userInfo.getId(), id);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deleteComment", commentDTO);
         return ResponseEntity.ok(commonResponse);
 
     }

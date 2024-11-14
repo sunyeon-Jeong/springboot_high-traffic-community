@@ -29,4 +29,12 @@
                     id = #{id}
     </update>
 
+    <!-- 게시글 댓글 삭제 -->
+    <delete id = "deleteComment">
+        DELETE FROM
+                                comment
+        WHERE
+                                id = #{id}
+    </delete>
+
 </mapper>
