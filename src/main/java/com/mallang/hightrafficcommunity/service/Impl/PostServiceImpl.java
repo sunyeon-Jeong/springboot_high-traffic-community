@@ -2,9 +2,11 @@ package com.mallang.hightrafficcommunity.service.Impl;
 
 import com.mallang.hightrafficcommunity.dto.CommentDTO;
 import com.mallang.hightrafficcommunity.dto.PostDTO;
+import com.mallang.hightrafficcommunity.dto.TagDTO;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.mapper.CommentMapper;
 import com.mallang.hightrafficcommunity.mapper.PostMapper;
+import com.mallang.hightrafficcommunity.mapper.TagMapper;
 import com.mallang.hightrafficcommunity.mapper.UserMapper;
 import com.mallang.hightrafficcommunity.service.PostService;
 import lombok.extern.log4j.Log4j2;
@@ -26,6 +28,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private TagMapper tagMapper;
 
     /* 게시글 등록 */
     @Override
@@ -116,6 +121,20 @@ public class PostServiceImpl implements PostService {
         } else {
             log.error("deleteComment ERROR! {}", id);
             throw new RuntimeException("deleteComment ERROR! 게시글 댓글 삭제 메서드를 확인해주세요\n" + "Params : " + id);
+        }
+
+    }
+
+    /* -----Tags----- */
+    /* 태그 등록 */
+    @Override
+    public void createTag(TagDTO tagDTO) {
+
+        if (tagDTO.getPostId() != 0) {
+            tagMapper.createTag(tagDTO);
+        } else {
+            log.error("createTag ERROR! {}", tagDTO);
+            throw new RuntimeException("createTag ERROR! 태그 등록 메서드를 확인해주세요\n" + "Params : " + tagDTO);
         }
 
     }

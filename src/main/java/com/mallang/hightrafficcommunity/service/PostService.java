@@ -2,6 +2,7 @@ package com.mallang.hightrafficcommunity.service;
 
 import com.mallang.hightrafficcommunity.dto.CommentDTO;
 import com.mallang.hightrafficcommunity.dto.PostDTO;
+import com.mallang.hightrafficcommunity.dto.TagDTO;
 
 import java.util.List;
 
@@ -28,5 +29,9 @@ public interface PostService {
 
     // 게시글 댓글 삭제
     void deleteComment(int userId, int id);
+
+    /* -----Tags----- */
+    // 태그 등록
+    void createTag(TagDTO tagDTO);
 
 }

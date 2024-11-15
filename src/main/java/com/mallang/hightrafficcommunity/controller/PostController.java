@@ -3,6 +3,7 @@ package com.mallang.hightrafficcommunity.controller;
 import com.mallang.hightrafficcommunity.aop.LoginCheck;
 import com.mallang.hightrafficcommunity.dto.CommentDTO;
 import com.mallang.hightrafficcommunity.dto.PostDTO;
+import com.mallang.hightrafficcommunity.dto.TagDTO;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.response.CommonResponse;
 import com.mallang.hightrafficcommunity.service.Impl.PostServiceImpl;
@@ -166,6 +167,21 @@ public class PostController {
         }
 
         CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deleteComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* -----Tags----- */
+    /* 태그 등록 */
+    @PostMapping("tags/create-tag")
+    @ResponseStatus(HttpStatus.CREATED)
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> createTag(String username,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        postServiceImpl.createTag(tagDTO);
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "createTag", tagDTO);
         return ResponseEntity.ok(commonResponse);
 
     }
