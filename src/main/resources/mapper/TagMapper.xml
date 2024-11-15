@@ -19,4 +19,15 @@
     </selectKey>
 </insert>
 
+    <!-- PostTag 테이블 생성 -->
+    <insert id = "createPostTag">
+        INSERT INTO post_tag (
+                            post_id
+                            , tag_id
+        ) VALUES (
+                            #{postId}
+                            , #{tagId}
+        )
+    </insert>
+
 </mapper>

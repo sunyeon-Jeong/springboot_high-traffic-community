@@ -3,6 +3,7 @@ package com.mallang.hightrafficcommunity.dto;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Getter @Setter
@@ -24,5 +25,8 @@ public class PostDTO {
     // FK
     private int userId;
     private int categoryId;
+
+    // PostTag Table
+    private List<TagDTO> tagDtoList;
 
 }

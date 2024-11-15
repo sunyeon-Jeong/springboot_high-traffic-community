@@ -11,6 +11,7 @@ import com.mallang.hightrafficcommunity.mapper.UserMapper;
 import com.mallang.hightrafficcommunity.service.PostService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -33,6 +34,8 @@ public class PostServiceImpl implements PostService {
     private TagMapper tagMapper;
 
     /* 게시글 등록 */
+    // 데이터 일관성 유지를 위해 게시글 등록 -> Redis 캐시 삭제 -> 다음 getSearchPosts 메서드 실행 시 최신 캐시 저장
+    @CacheEvict(value = "getSearchPosts", allEntries = true)
     @Override
     public void createPost(String username, PostDTO postDTO) {
 
@@ -43,6 +46,15 @@ public class PostServiceImpl implements PostService {
 
         if (userInfo != null) {
             postMapper.createPost(postDTO);
+
+            // PostTag 테이블 생성
+            for (int i=0; i < postDTO.getTagDtoList().size(); i++) {
+                TagDTO tagDTO = postDTO.getTagDtoList().get(i);
+                tagMapper.createTag(tagDTO);
+                // M:N 관계 테이블 생성
+                tagMapper.createPostTag(tagDTO.getId(), postDTO.getId());
+            }
+
         } else {
             log.error("createPost ERROR! {}", postDTO);
             throw new RuntimeException("createPost ERROR! 게시글 등록 메서드를 확인해주세요\n" + "Params : " + postDTO);
