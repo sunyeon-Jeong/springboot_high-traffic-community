@@ -205,4 +205,22 @@ public class PostController {
 
     }
 
+    /* 태그 삭제 */
+    @DeleteMapping("tags/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> deleteTag(String username,
+                                                                                                        @PathVariable(name = "id") int id,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            postServiceImpl.deleteTag(userInfo.getId(), id);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deleteTag", tagDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
 }

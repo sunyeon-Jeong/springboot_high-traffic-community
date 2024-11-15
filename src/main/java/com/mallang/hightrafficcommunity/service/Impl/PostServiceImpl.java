@@ -164,4 +164,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 태그 삭제 */
+    @Override
+    public void deleteTag(int userId, int tagId) {
+
+        if (userId != 0 && tagId != 0) {
+            tagMapper.deleteTag(tagId);
+        } else {
+            log.error("deleteTag ERROR! {}", tagId);
+            throw new RuntimeException("deleteTag ERROR! 태그 삭제 메서드를 확인해주세요\n" + "Params : " + tagId);
+        }
+
+    }
+
 }

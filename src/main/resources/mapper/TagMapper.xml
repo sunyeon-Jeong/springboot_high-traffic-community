@@ -30,6 +30,14 @@
                     id = #{id}
     </update>
 
+    <!-- 태그 삭제 -->
+    <delete id = "deleteTag">
+        DELETE FROM
+                                tag
+        WHERE
+                                id = #{postId}
+    </delete>
+
     <!-- PostTag 테이블 생성 -->
     <insert id = "createPostTag">
         INSERT INTO post_tag (

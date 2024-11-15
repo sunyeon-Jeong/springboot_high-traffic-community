@@ -37,4 +37,7 @@ public interface PostService {
     // 태그 수정
     void updateTag(TagDTO tagDTO);
 
+    // 태그 삭제
+    void deleteTag(int userId, int tagId);
+
 }
