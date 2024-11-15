@@ -186,4 +186,23 @@ public class PostController {
 
     }
 
+    /* 태그 수정 */
+    @PatchMapping("tags/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> updateTag(String username,
+                                                                                                        @PathVariable(name = "id") int id,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            tagDTO.setId(id);
+            postServiceImpl.updateTag(tagDTO);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "updateTag", tagDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
 }

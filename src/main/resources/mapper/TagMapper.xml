@@ -19,6 +19,17 @@
     </selectKey>
 </insert>
 
+    <!-- 태그 수정 -->
+    <update id = "updateTag" parameterType = "com.mallang.hightrafficcommunity.dto.TagDTO">
+        UPDATE
+                    tag
+        SET
+                    tag = #{tag}
+                    , url = #{url}
+        WHERE
+                    id = #{id}
+    </update>
+
     <!-- PostTag 테이블 생성 -->
     <insert id = "createPostTag">
         INSERT INTO post_tag (

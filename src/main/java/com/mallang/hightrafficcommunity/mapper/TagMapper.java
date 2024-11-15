@@ -9,6 +9,9 @@ public interface TagMapper {
     // 태그 등록
     int createTag(TagDTO tagDTO);
 
+    // 태그 수정
+    void updateTag(TagDTO tagDTO);
+
     // PostTag 테이블 생성
     void createPostTag(Integer tagId, Integer postId);
 

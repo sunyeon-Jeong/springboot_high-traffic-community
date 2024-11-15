@@ -34,4 +34,7 @@ public interface PostService {
     // 태그 등록
     void createTag(TagDTO tagDTO);
 
+    // 태그 수정
+    void updateTag(TagDTO tagDTO);
+
 }

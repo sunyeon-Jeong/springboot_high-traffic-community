@@ -151,4 +151,17 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    /* 태그 수정 */
+    @Override
+    public void updateTag(TagDTO tagDTO) {
+
+        if (tagDTO != null) {
+            tagMapper.updateTag(tagDTO);
+        } else {
+            log.error("updateTag ERROR! {}", tagDTO);
+            throw new RuntimeException("updateTag ERROR! 태그 수정 메서드를 확인해주세요\n" + "Params : " + tagDTO);
+        }
+
+    }
+
 }
