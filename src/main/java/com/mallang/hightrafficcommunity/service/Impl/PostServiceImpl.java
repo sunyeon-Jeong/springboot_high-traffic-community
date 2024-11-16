@@ -47,12 +47,16 @@ public class PostServiceImpl implements PostService {
         if (userInfo != null) {
             postMapper.createPost(postDTO);
 
-            // PostTag 테이블 생성
-            for (int i=0; i < postDTO.getTagDtoList().size(); i++) {
-                TagDTO tagDTO = postDTO.getTagDtoList().get(i);
-                tagMapper.createTag(tagDTO);
-                // M:N 관계 테이블 생성
-                tagMapper.createPostTag(tagDTO.getId(), postDTO.getId());
+            if (postDTO.getTagDtoList() != null) {
+
+                // PostTag 테이블 생성
+                for (int i = 0; i < postDTO.getTagDtoList().size(); i++) {
+                    TagDTO tagDTO = postDTO.getTagDtoList().get(i);
+                    tagMapper.createTag(tagDTO);
+                    // M:N 관계 테이블 생성
+                    tagMapper.createPostTag(tagDTO.getId(), postDTO.getId());
+                }
+
             }
 
         } else {
