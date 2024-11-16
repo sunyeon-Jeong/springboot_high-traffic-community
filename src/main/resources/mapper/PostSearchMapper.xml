@@ -56,4 +56,26 @@
                     </if>
     </select>
 
+    <!-- 해시태그 검색 -->
+    <select id = "getSearchPostsByTag" resultMap = "postSearchResultMap">
+        SELECT
+                    p.id
+                    , p.title
+                    , p.is_admin
+                    , p.contents
+                    , p.views
+                    , p.file_id
+                    , p.user_id
+                    , p.category_id
+                    , p.create_time
+                    , p.modify_time
+        FROM
+                    post p
+        JOIN
+                    post_tag pt ON p.id = pt.post_id
+        JOIN    tag t ON pt.tag_id = t.id
+        WHERE
+                    t.tag = #{tag}
+    </select>
+
 </mapper>

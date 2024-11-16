@@ -10,4 +10,7 @@ public interface PostSearchService {
     // 게시글 검색
     List<PostDTO> getSearchPosts(PostSearchRequestDTO postSearchRequestDTO);
 
+    // 해시태그 검색
+    List<PostDTO> getSearchPostsByTag(String tag);
+
 }
