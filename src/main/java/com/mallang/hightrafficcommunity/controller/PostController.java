@@ -1,7 +1,9 @@
 package com.mallang.hightrafficcommunity.controller;
 
 import com.mallang.hightrafficcommunity.aop.LoginCheck;
+import com.mallang.hightrafficcommunity.dto.CommentDTO;
 import com.mallang.hightrafficcommunity.dto.PostDTO;
+import com.mallang.hightrafficcommunity.dto.TagDTO;
 import com.mallang.hightrafficcommunity.dto.UserDTO;
 import com.mallang.hightrafficcommunity.dto.response.CommonResponse;
 import com.mallang.hightrafficcommunity.service.Impl.PostServiceImpl;
@@ -115,6 +117,110 @@ public class PostController {
     private static class DeletePostRequest {
         private int id;
         private String username;
+    }
+
+    /* -----Comments----- */
+    /* 게시글 댓글 등록 */
+    @PostMapping("comments/create-comment")
+    @ResponseStatus(HttpStatus.CREATED)
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> createComment(String username,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        postServiceImpl.createComment(commentDTO);
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "createComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* 게시글 댓글 수정 */
+    @PatchMapping("comments/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> updateComment(String username,
+                                                                                                                            @PathVariable(name = "id") int id,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            commentDTO.setId(id);
+            postServiceImpl.updateComment(commentDTO);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "updateComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* 게시글 댓글 삭제 */
+    @DeleteMapping("comments/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<CommentDTO>> deleteComment(String username,
+                                                                                                                            @PathVariable(name = "id") int id,
+                                                                                                                            @RequestBody CommentDTO commentDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            postServiceImpl.deleteComment(userInfo.getId(), id);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deleteComment", commentDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* -----Tags----- */
+    /* 태그 등록 */
+    @PostMapping("tags/create-tag")
+    @ResponseStatus(HttpStatus.CREATED)
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> createTag(String username,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        postServiceImpl.createTag(tagDTO);
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "createTag", tagDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* 태그 수정 */
+    @PatchMapping("tags/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> updateTag(String username,
+                                                                                                        @PathVariable(name = "id") int id,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            tagDTO.setId(id);
+            postServiceImpl.updateTag(tagDTO);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "updateTag", tagDTO);
+        return ResponseEntity.ok(commonResponse);
+
+    }
+
+    /* 태그 삭제 */
+    @DeleteMapping("tags/{id}")
+    @LoginCheck(userType = LoginCheck.UserType.MEMBER)
+    public ResponseEntity<CommonResponse<TagDTO>> deleteTag(String username,
+                                                                                                        @PathVariable(name = "id") int id,
+                                                                                                        @RequestBody TagDTO tagDTO) {
+
+        UserDTO userInfo = userServiceImpl.getUserInfo(username);
+
+        if (userInfo != null) {
+            postServiceImpl.deleteTag(userInfo.getId(), id);
+        }
+
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK, "SUCCESS", "deleteTag", tagDTO);
+        return ResponseEntity.ok(commonResponse);
+
     }
 
 }

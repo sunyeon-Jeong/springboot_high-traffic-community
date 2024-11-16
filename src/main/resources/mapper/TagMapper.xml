@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE
+        mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mallang.hightrafficcommunity.mapper.TagMapper">
+
+<!-- 태그 등록 -->
+<insert id = "createTag" parameterType = "com.mallang.hightrafficcommunity.dto.TagDTO">
+    INSERT INTO tag (
+    tag
+    , url
+    ) VALUES (
+    #{tag}
+    , #{url}
+    )
+    <selectKey keyProperty = "id" resultType = "Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+</insert>
+
+    <!-- 태그 수정 -->
+    <update id = "updateTag" parameterType = "com.mallang.hightrafficcommunity.dto.TagDTO">
+        UPDATE
+                    tag
+        SET
+                    tag = #{tag}
+                    , url = #{url}
+        WHERE
+                    id = #{id}
+    </update>
+
+    <!-- 태그 삭제 -->
+    <delete id = "deleteTag">
+        DELETE FROM
+                                tag
+        WHERE
+                                id = #{postId}
+    </delete>
+
+    <!-- PostTag 테이블 생성 -->
+    <insert id = "createPostTag">
+        INSERT INTO post_tag (
+                            post_id
+                            , tag_id
+        ) VALUES (
+                            #{postId}
+                            , #{tagId}
+        )
+    </insert>
+
+</mapper>

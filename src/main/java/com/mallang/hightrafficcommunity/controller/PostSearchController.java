@@ -7,10 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +25,17 @@ public class PostSearchController {
     public PostSearchResponseDTO getSearchPosts(@RequestBody PostSearchRequestDTO postSearchRequestDTO) {
 
         List<PostDTO> postDTOList = postsearchServiceImpl.getSearchPosts(postSearchRequestDTO);
+
+        return new PostSearchResponseDTO(postDTOList);
+
+    }
+
+    /* 해시태그 검색 */
+    @GetMapping
+    public PostSearchResponseDTO getSearchPostsByTag(String tag) {
+
+        List<PostDTO> postDTOList = postsearchServiceImpl.getSearchPostsByTag(tag);
+        log.info(tag + "컨트롤러");
 
         return new PostSearchResponseDTO(postDTOList);
 
