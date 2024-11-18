@@ -20,8 +20,8 @@ public class PostSearchServiceImpl implements PostSearchService {
     private PostSearchMapper postSearchMapper;
 
     /* 게시글 검색 */
-    @Async
-    @Cacheable(value = "getSearchPosts", key = "'getSearchPosts' + #postSearchRequestDTO.getTitle() + #postSearchRequestDTO.getCategoryId()")
+    @Async // 성능테스트 후 리팩토링 ; 비동기처리
+    @Cacheable(value = "getSearchPosts", key = "'getSearchPosts' + #postSearchRequestDTO.getTitle() + #postSearchRequestDTO.getCategoryId()") // 성능테스트 후 리팩토링 ; key값 추가
     @Override
     public List<PostDTO> getSearchPosts(PostSearchRequestDTO postSearchRequestDTO) {
 
