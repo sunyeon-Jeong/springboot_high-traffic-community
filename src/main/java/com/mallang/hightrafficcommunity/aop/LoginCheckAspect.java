@@ -46,7 +46,7 @@ public class LoginCheckAspect {
         }
 
         if (username == null) {
-            log.debug(proceedingJoinPoint.toString() + "account : " + username);
+            log.info(proceedingJoinPoint.toString() + "account : " + username);
             throw new HttpStatusCodeException(HttpStatus.UNAUTHORIZED, "로그인한 username 값을 확인해주세요.") {};
         }
 

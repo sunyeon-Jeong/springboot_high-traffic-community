@@ -1,0 +1,253 @@
+[36m2024/11/19 14:10:24,387[m [32m[INFO ][m [org.springframework.boot.StartupInfoLogger] [33m[main][m- Started HighTrafficCommunityApplication in 5.058 seconds (process running for 7.351)
+ -[36m2024/11/19 14:10:24,402[m [34m[DEBUG][m [org.springframework.boot.availability.ApplicationAvailabilityBean] [33m[main][m- Application availability state LivenessState changed to CORRECT
+ -[36m2024/11/19 14:10:24,406[m [34m[DEBUG][m [org.springframework.boot.availability.ApplicationAvailabilityBean] [33m[main][m- Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+ -[36m2024/11/19 14:10:40,124[m [32m[INFO ][m [org.apache.juli.logging.DirectJDKLog] [33m[http-nio-8080-exec-2][m- Initializing Spring DispatcherServlet 'dispatcherServlet'
+ -[36m2024/11/19 14:10:40,125[m [32m[INFO ][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-2][m- Initializing Servlet 'dispatcherServlet'
+ -[36m2024/11/19 14:10:40,125[m [34m[DEBUG][m [org.springframework.web.servlet.DispatcherServlet] [33m[http-nio-8080-exec-2][m- Detected StandardServletMultipartResolver
+ -[36m2024/11/19 14:10:40,125[m [34m[DEBUG][m [org.springframework.web.servlet.DispatcherServlet] [33m[http-nio-8080-exec-2][m- Detected AcceptHeaderLocaleResolver
+ -[36m2024/11/19 14:10:40,126[m [34m[DEBUG][m [org.springframework.web.servlet.DispatcherServlet] [33m[http-nio-8080-exec-2][m- Detected FixedThemeResolver
+ -[36m2024/11/19 14:10:40,127[m [34m[DEBUG][m [org.springframework.web.servlet.DispatcherServlet] [33m[http-nio-8080-exec-2][m- Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1bc74b2d
+ -[36m2024/11/19 14:10:40,128[m [34m[DEBUG][m [org.springframework.web.servlet.DispatcherServlet] [33m[http-nio-8080-exec-2][m- Detected org.springframework.web.servlet.support.SessionFlashMapManager@24844a8c
+ -[36m2024/11/19 14:10:40,128[m [34m[DEBUG][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-2][m- enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+ -[36m2024/11/19 14:10:40,128[m [32m[INFO ][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-2][m- Completed initialization in 3 ms
+ -[36m2024/11/19 14:10:40,144[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-2][m- POST "/users/login", parameters={}
+ -[36m2024/11/19 14:10:40,168[m [34m[DEBUG][m [org.springframework.web.servlet.handler.AbstractHandlerMapping] [33m[http-nio-8080-exec-2][m- Mapped to com.mallang.hightrafficcommunity.controller.UserController#login(LoginRequestDTO, HttpSession)
+ -[36m2024/11/19 14:10:40,290[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-2][m- Read "application/json;charset=UTF-8" to [com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO@5e5d9231]
+ -[36m2024/11/19 14:10:40,387[m [34m[DEBUG][m [org.springframework.jdbc.datasource.DataSourceUtils] [33m[http-nio-8080-exec-2][m- Fetching JDBC Connection from DataSource
+ -[36m2024/11/19 14:10:40,392[m [32m[INFO ][m [com.zaxxer.hikari.HikariDataSource] [33m[http-nio-8080-exec-2][m- HikariPool-1 - Starting...
+ -[36m2024/11/19 14:10:41,567[m [34m[DEBUG][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-2][m- Failed to complete request: org.mybatis.spring.MyBatisSystemException
+ -[36m2024/11/19 14:10:41,567[m [31m[ERROR][m [org.apache.juli.logging.DirectJDKLog] [33m[http-nio-8080-exec-2][m- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.mybatis.spring.MyBatisSystemException] with root cause
+ - java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[?:?]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:639) ~[?:?]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:?]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:348) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:89) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:64) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy85.selectOne(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy90.login(Unknown Source) ~[?:?]
+	at com.mallang.hightrafficcommunity.service.Impl.UserServiceImpl.login(UserServiceImpl.java:70) ~[main/:?]
+	at com.mallang.hightrafficcommunity.controller.UserController.login(UserController.java:61) ~[main/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.14.jar:6.1.14]
+	at com.mallang.hightrafficcommunity.controller.UserController$$SpringCGLIB$$0.login(<generated>) ~[main/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547) ~[jakarta.servlet-api-6.0.0.jar:6.0.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614) ~[jakarta.servlet-api-6.0.0.jar:6.0.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:833) [?:?]
+[36m2024/11/19 14:10:41,590[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-2][m- "ERROR" dispatch for POST "/error", parameters={}
+ -[36m2024/11/19 14:10:41,592[m [34m[DEBUG][m [org.springframework.web.servlet.handler.AbstractHandlerMapping] [33m[http-nio-8080-exec-2][m- Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+ -[36m2024/11/19 14:10:41,613[m [34m[DEBUG][m [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [33m[http-nio-8080-exec-2][m- Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+ -[36m2024/11/19 14:10:41,615[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-2][m- Writing [{timestamp=Tue Nov 19 14:10:41 KST 2024, status=500, error=Internal Server Error, path=/users/login}]
+ -[36m2024/11/19 14:10:41,644[m [34m[DEBUG][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-2][m- Exiting from "ERROR" dispatch, status 500
+ -[36m2024/11/19 14:11:16,639[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-4][m- POST "/users/login", parameters={}
+ -[36m2024/11/19 14:11:16,640[m [34m[DEBUG][m [org.springframework.web.servlet.handler.AbstractHandlerMapping] [33m[http-nio-8080-exec-4][m- Mapped to com.mallang.hightrafficcommunity.controller.UserController#login(LoginRequestDTO, HttpSession)
+ -[36m2024/11/19 14:11:16,641[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-4][m- Read "application/json;charset=UTF-8" to [com.mallang.hightrafficcommunity.dto.request.LoginRequestDTO@e9e305]
+ -[36m2024/11/19 14:11:16,642[m [34m[DEBUG][m [org.springframework.jdbc.datasource.DataSourceUtils] [33m[http-nio-8080-exec-4][m- Fetching JDBC Connection from DataSource
+ -[36m2024/11/19 14:11:16,642[m [32m[INFO ][m [com.zaxxer.hikari.HikariDataSource] [33m[http-nio-8080-exec-4][m- HikariPool-1 - Starting...
+ -[36m2024/11/19 14:11:17,159[m [32m[INFO ][m [com.zaxxer.hikari.pool.HikariPool] [33m[http-nio-8080-exec-4][m- HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f173f8d
+ -[36m2024/11/19 14:11:17,162[m [32m[INFO ][m [com.zaxxer.hikari.HikariDataSource] [33m[http-nio-8080-exec-4][m- HikariPool-1 - Start completed.
+ -[36m2024/11/19 14:11:17,278[m [34m[DEBUG][m [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [33m[http-nio-8080-exec-4][m- Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+ -[36m2024/11/19 14:11:17,278[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-4][m- Writing [200 OK]
+ -[36m2024/11/19 14:11:17,281[m [34m[DEBUG][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-4][m- Completed 200 OK
+ -[36m2024/11/19 14:11:43,951[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-5][m- PATCH "/users/update-password", parameters={}
+ -[36m2024/11/19 14:11:43,952[m [34m[DEBUG][m [org.springframework.web.servlet.handler.AbstractHandlerMapping] [33m[http-nio-8080-exec-5][m- Mapped to com.mallang.hightrafficcommunity.controller.UserController#updatePassword(String, UpdatePasswordRequestDTO, HttpSession)
+ -[36m2024/11/19 14:11:43,956[m [34m[DEBUG][m [org.springframework.core.log.LogFormatUtils] [33m[http-nio-8080-exec-5][m- Read "application/json;charset=UTF-8" to [com.mallang.hightrafficcommunity.dto.request.UpdatePasswordRequestDTO@6fbe4d4]
+ -[36m2024/11/19 14:11:43,966[m [34m[DEBUG][m [org.springframework.jdbc.datasource.DataSourceUtils] [33m[http-nio-8080-exec-5][m- Fetching JDBC Connection from DataSource
+ -[36m2024/11/19 14:11:43,970[m [31m[ERROR][m [com.mallang.hightrafficcommunity.service.Impl.UserServiceImpl] [33m[http-nio-8080-exec-5][m- updatePassword ERROR! null
+ -[36m2024/11/19 14:16:05,808[m [33m[WARN ][m [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [33m[HikariPool-1 housekeeper][m- HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m48s537ms).
+ -[36m2024/11/19 14:16:05,828[m [31m[ERROR][m [com.mallang.hightrafficcommunity.controller.UserController] [33m[http-nio-8080-exec-5][m- updatePassword 실패
+ - java.lang.IllegalArgumentException: updatePassword ERROR! 비밀번호 변경 메서드를 확인해주세요
+Params : null
+	at com.mallang.hightrafficcommunity.service.Impl.UserServiceImpl.updatePassword(UserServiceImpl.java:98) ~[main/:?]
+	at com.mallang.hightrafficcommunity.controller.UserController.updatePassword(UserController.java:121) [main/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:102) [spring-aop-6.1.14.jar:6.1.14]
+	at com.mallang.hightrafficcommunity.aop.LoginCheckAspect.adminLoginCheck(LoginCheckAspect.java:59) [main/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:637) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:627) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:71) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) [spring-aop-6.1.14.jar:6.1.14]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) [spring-aop-6.1.14.jar:6.1.14]
+	at com.mallang.hightrafficcommunity.controller.UserController$$SpringCGLIB$$0.updatePassword(<generated>) [main/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) [spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) [spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) [spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:888) [spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614) [jakarta.servlet-api-6.0.0.jar:6.0.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) [spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) [spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) [spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:833) [?:?]
+[36m2024/11/19 14:16:05,905[m [34m[DEBUG][m [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [33m[http-nio-8080-exec-5][m- Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+ -[36m2024/11/19 14:16:05,906[m [34m[DEBUG][m [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [33m[http-nio-8080-exec-5][m- Nothing to write: null body
+ -[36m2024/11/19 14:16:05,908[m [34m[DEBUG][m [org.springframework.web.servlet.FrameworkServlet] [33m[http-nio-8080-exec-5][m- Completed 400 BAD_REQUEST
+ -[36m2024/11/19 14:16:05,979[m [34m[DEBUG][m [org.springframework.boot.availability.ApplicationAvailabilityBean] [33m[SpringApplicationShutdownHook][m- Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+ -[36m2024/11/19 14:16:05,980[m [34m[DEBUG][m [org.springframework.context.support.AbstractApplicationContext] [33m[SpringApplicationShutdownHook][m- Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@a77614d, started on Tue Nov 19 14:10:19 KST 2024
+ -[36m2024/11/19 14:16:06,004[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup] [33m[SpringApplicationShutdownHook][m- Stopping beans in phase 2147483647
+ -[36m2024/11/19 14:16:06,007[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor] [33m[SpringApplicationShutdownHook][m- Bean 'applicationTaskExecutor' completed its stop procedure
+ -[36m2024/11/19 14:16:06,007[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup] [33m[SpringApplicationShutdownHook][m- Stopping beans in phase 2147482623
+ -[36m2024/11/19 14:16:06,011[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor] [33m[SpringApplicationShutdownHook][m- Bean 'webServerGracefulShutdown' completed its stop procedure
+ -[36m2024/11/19 14:16:06,011[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup] [33m[SpringApplicationShutdownHook][m- Stopping beans in phase 2147481599
+ -[36m2024/11/19 14:16:06,023[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor] [33m[SpringApplicationShutdownHook][m- Bean 'webServerStartStop' completed its stop procedure
+ -[36m2024/11/19 14:16:06,023[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup] [33m[SpringApplicationShutdownHook][m- Stopping beans in phase 0
+ -[36m2024/11/19 14:16:06,212[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor] [33m[SpringApplicationShutdownHook][m- Bean 'redisConnectionFactory' completed its stop procedure
+ -[36m2024/11/19 14:16:06,212[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup] [33m[SpringApplicationShutdownHook][m- Stopping beans in phase -2147483647
+ -[36m2024/11/19 14:16:06,213[m [34m[DEBUG][m [org.springframework.context.support.DefaultLifecycleProcessor] [33m[SpringApplicationShutdownHook][m- Bean 'springBootLoggingLifecycle' completed its stop procedure
+ -[36m2024/11/19 14:16:06,218[m [34m[DEBUG][m [org.springframework.beans.factory.support.DisposableBeanAdapter] [33m[SpringApplicationShutdownHook][m- Custom destroy method 'shutdown' on bean with name 'lettuceClientResources' completed asynchronously
+ -[36m2024/11/19 14:16:06,223[m [34m[DEBUG][m [org.springframework.jmx.export.MBeanExporter] [33m[SpringApplicationShutdownHook][m- Unregistering JMX-exposed beans on shutdown
+ -[36m2024/11/19 14:16:06,225[m [34m[DEBUG][m [org.springframework.jmx.support.MBeanRegistrationSupport] [33m[SpringApplicationShutdownHook][m- Unregistering JMX-exposed beans
+ -[36m2024/11/19 14:16:06,226[m [34m[DEBUG][m [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [33m[SpringApplicationShutdownHook][m- Shutting down ExecutorService 'applicationTaskExecutor'
+ -[36m2024/11/19 14:16:06,229[m [32m[INFO ][m [com.zaxxer.hikari.HikariDataSource] [33m[SpringApplicationShutdownHook][m- HikariPool-1 - Shutdown initiated...
+ -[36m2024/11/19 14:16:06,275[m [32m[INFO ][m [com.zaxxer.hikari.HikariDataSource] [33m[SpringApplicationShutdownHook][m- HikariPool-1 - Shutdown completed.
+ -
