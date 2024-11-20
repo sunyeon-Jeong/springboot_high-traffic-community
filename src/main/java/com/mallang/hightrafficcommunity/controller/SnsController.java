@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import software.amazon.awssdk.services.sns.SnsClient;
-import software.amazon.awssdk.services.sns.model.CreateTopicRequest;
-import software.amazon.awssdk.services.sns.model.CreateTopicResponse;
-import software.amazon.awssdk.services.sns.model.SnsResponse;
+import software.amazon.awssdk.services.sns.model.*;
 
 @RestController
 @Log4j2
@@ -48,6 +46,33 @@ public class SnsController {
         snsClient.close();
 
         return new ResponseEntity<>("TOPIC CREATED SUCCESSFULLY", HttpStatus.OK);
+
+    }
+
+    /* 토픽 구독 */
+    @PostMapping("sns/subscribe")
+    public ResponseEntity<String> topicSubscribe(@RequestParam final String endpoint,
+                                                                                @RequestParam final String topicArn) {
+
+        final SubscribeRequest subscribeRequest = SubscribeRequest.builder()
+                .protocol("https")
+                .topicArn(topicArn)
+                .endpoint(endpoint)
+                .build();
+
+        SnsClient snsClient = snsService.getSnsClient();
+
+        final SubscribeResponse subscribeResponse = snsClient.subscribe(subscribeRequest);
+
+        if (!subscribeResponse.sdkHttpResponse().isSuccessful()) {
+            throw getResponseStatusException(subscribeResponse);
+        }
+
+        log.info("topicARN to subscribe = " + subscribeResponse.subscriptionArn());
+        log.info("subscription list = " + snsClient.listSubscriptions());
+        snsClient.close();
+
+        return new ResponseEntity<>("TOPIC SUBSCRIBED SUCCESSFULLY", HttpStatus.OK);
 
     }
 
