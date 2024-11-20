@@ -6,11 +6,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sns.model.*;
+
+import java.util.Map;
 
 @RestController
 @Log4j2
@@ -73,6 +76,28 @@ public class SnsController {
         snsClient.close();
 
         return new ResponseEntity<>("TOPIC SUBSCRIBED SUCCESSFULLY", HttpStatus.OK);
+
+    }
+
+    /* 토픽 메시지 게시 */
+    @PostMapping("sns/publish")
+    public String messagePublish(@RequestParam String topicArn,
+                                 @RequestBody Map<String, Object> message) {
+
+        SnsClient snsClient = snsService.getSnsClient();
+
+        final PublishRequest publishRequest = PublishRequest.builder()
+                .topicArn(topicArn)
+                .subject("HTTP ENDPOINT TEST MESSAGE")
+                .message(message.toString())
+                .build();
+
+        PublishResponse publishResponse = snsClient.publish(publishRequest);
+
+        log.info("message status : " + publishResponse.sdkHttpResponse().statusCode());
+        snsClient.close();
+
+        return "sent MESSAGE ID = " + publishResponse.messageId();
 
     }
 
