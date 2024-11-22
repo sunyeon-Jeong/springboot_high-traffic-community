@@ -41,3 +41,4 @@ build.gradle
 
 src/main/resources/*.properties
 src/main/resources/*.yml
+logs/
