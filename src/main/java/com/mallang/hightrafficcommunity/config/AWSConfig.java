@@ -11,8 +11,7 @@ public class AWSConfig {
     @Value("${sns.topic.arn}")
     private String snsTopicARN;
 
-    @Value("" +
-            "${aws.accessKey}")
+    @Value("${aws.accessKey}")
     private String awsAccessKey;
 
     @Value("${aws.secretKey}")
