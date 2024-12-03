@@ -18,6 +18,10 @@
 
 ### 🛠️ Project Architecture
 ![ProjectArchitecture.png](ProjectArchitecture.png)
+- Language : Java (JDK 17)
+- Framework : SpringBoot 3.3.5
+- Database : MySQL 8.0 & MyBatis, Redis 3.1.0
+- Test : Locust & Python3
 
 ### ✏️ ERD
 ![ERD.png](ERD.png)
