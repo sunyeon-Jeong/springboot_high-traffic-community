@@ -23,5 +23,6 @@
 - Database : MySQL 8.0 & MyBatis, Redis 3.1.0
 - Test : Locust & Python3
 
-### ✏️ ERD
+### ✏️ ERD & Sequence
 ![ERD.png](ERD.png)
+![Sequence-postSearch.png](Sequence-postSearch.png)
