@@ -16,5 +16,8 @@
 |Tag|- 태그 등록, 수정, 삭제|
 |SNS|- SNS 토픽 생성 <br> - 토픽 구독 <br> - 메시지 게시|
 
+### 🛠️ Project Architecture
+![ProjectArchitecture.png](ProjectArchitecture.png)
+
 ### ✏️ ERD
 ![ERD.png](ERD.png)
