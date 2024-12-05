@@ -104,3 +104,23 @@
 - **서비스 단 검색 메서드 캐시 키 설정**
   - `@Cacheable(key = "A+B+C")` 캐시 키 설정
   - 캐시 키를 요청 파라미터에 포함시켜 캐시 적중률을 높이고, 이로인해 반복적인 외부 데이터 접근이 줄어들면서 데이터 조회속도 최적화
+
+### 🎯 Trouble Shooting
+#### 1️⃣ String Parameter를 활용한 application.properties 민감정보 관리
+- 👀 [See details on velog](https://velog.io/@mallang/TroubleShooting-Jenkins-Build-Failed-String-Parameter를-활용한-application.properties-민감정보-관리)
+
+#### 2️⃣ Amazon Linux 인스턴스 Jenkins 설치에러
+- 👀 [See details on velog](https://velog.io/@mallang/TroubleShooting-CD-EC2-Amazon-Linux-인스턴스에-Jenkins-설치-에러)
+
+#### 3️⃣ 프로젝트 목표 도달 관련
+- 목표 : 1000TPS 이상의 게시글검색 API 구현
+- 스펙 비교
+
+  | 구분 |로컬 개발 환경|평균 서버 환경(가정)|
+  |:---:|:---:|:---:|
+  | CPU |1.4 GHz 쿼드 코어 Intel Core i5|Intel Xeon 이상|
+  |RAM|8GB|32~64GB|
+  |Storage|512GB|512GB|
+
+  - 평균 서버 환경이 위와 같다고 가정할 때, 로컬 개발 환경에 비해 약 5배 이상 연산 성능이 차이남
+- 결론 : 로컬 개발 환경의 성능 한계를 고려하여, 상기 Locust TPS 수치를 5배로 상향 조정한 값을 최종 TPS 수치로 본다
