@@ -33,3 +33,16 @@
 |                **성능테스트를 위한 DB 데이터 자동삽입**                 | **게시글 조회 시뮬레이션 코드** |
 |:--------------------------------------------------------:|:-------------------:|
 | ![Locust-AddPost.png](readmeImages%2FLocust-AddPost.png) |![Locust-SearchPost.png](readmeImages%2FLocust-SearchPost.png)|
+
+#### 2️⃣ STRESS 테스트
+- 500명의 동시 사용자가 초당 50번 호출 →  분당(5분) 사용자를 50씩 늘린 후 지표확인
+
+|                            **개선 전**                            |                            **개선 후**                            |
+|:--------------------------------------------------------------:|:--------------------------------------------------------------:|
+| ![Locust-Stress-B.png](readmeImages%2FLocust-Stress-B.png)<br>![Locust-Stress-B-Chart.png](readmeImages%2FLocust-Stress-B-Chart.png) | ![Locust-Stress-A.png](readmeImages%2FLocust-Stress-A.png)<br>![Locust-Stress-A-Chart.png](readmeImages%2FLocust-Stress-A-Chart.png) |
+
+| **비교항목**       |**개선 전**|**개선 후**| **개선효과**    |
+|----------------|-------|-------|-------------|
+| 요청 합계          |25,646|118,879| - 4.6배 증가   |
+| 평균 응답 시간(ms)   |5309.41|6.01| - 99.88% 감소 |
+| 초당 평균 요청 수(RPS)|85.21|394.09| - 4.6배 증가   |
