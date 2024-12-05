@@ -23,9 +23,10 @@
 - Database : MySQL 8.0 & MyBatis, Redis 3.1.0
 - Test : Locust & Python3
 
-### ✏️ ERD & Sequence
-![ERD.png](readmeImages/ERD.png)
-![Sequence-postSearch.png](readmeImages/Sequence-postSearch.png)
+### ✏️ Project Docs
+|**ERD**|**Sequence**|
+|:---:|:---:|
+|![ERD.png](readmeImages/ERD.png)|![Sequence-postSearch.png](readmeImages/Sequence-postSearch.png)|
 
 ### 🚀 Locust 테스트 및 성능개선
 #### 1️⃣ 데이터 준비
