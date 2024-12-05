@@ -1,6 +1,6 @@
 # high-traffic Community
 ### 🎯 Goals
-- 대용량 트래픽 처리 어플리케이|션 개발 (1000TPS 이상의 게시글검색 API 구현)
+- 대용량 트래픽 처리 어플리케이션 개발 (1000TPS 이상의 게시글검색 API 구현)
 - 객체지향(OOP) 및 관점지향(AOP) 프로그래밍 원칙 준수를 통한 확장성 & 유지보수성을 고려한 설계
 - Redis 활용을 통한 게시글검색 API 성능 최적화 및 응답속도 향상
 - AWS SNS와 Webhook을 활용한 실시간 알림서비스 구현
@@ -46,3 +46,16 @@
 | 요청 합계          |25,646|118,879| - 4.6배 증가   |
 | 평균 응답 시간(ms)   |5309.41|6.01| - 99.88% 감소 |
 | 초당 평균 요청 수(RPS)|85.21|394.09| - 4.6배 증가   |
+
+#### 3️⃣ ENDURANCE 테스트
+- 100명의 동시 사용자가 초당 100번을 호출 → 10분 동안의 지표확인
+
+|                               **개선 전**                                |                               **개선 후**                               |
+|:---------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+| ![Locust-Endurance-B.png](readmeImages%2FLocust-Endurance-B.png)<br>![Locust-Endurance-B-Chart.png](readmeImages%2FLocust-Endurance-B-Chart.png)|![Locust-Endurance-A.png](readmeImages%2FLocust-Endurance-A.png)<br>![Locust-Endurance-A-Chart.png](readmeImages%2FLocust-Endurance-A-Chart.png)|
+
+|**비교항목**|**개선 전**|**개선 후**| **개선효과**   |
+|---|---|---|------------|
+|요청 합계|38,883|388,759| - 10배 증가   |
+|평균 응답 시간(ms)|43.22|25.75| - 40.5% 감소 |
+|초당 평균 요청 수(RPS)|64.8|664.4| - 10배 증가   |
