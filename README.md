@@ -59,3 +59,16 @@
 |요청 합계|38,883|388,759| - 10배 증가   |
 |평균 응답 시간(ms)|43.22|25.75| - 40.5% 감소 |
 |초당 평균 요청 수(RPS)|64.8|664.4| - 10배 증가   |
+
+#### 4️⃣ PEAK 테스트
+- 100명의 동시 사용자가 초당 50번씩 호출 → 1분에 1000명으로 사용자를 한번에 늘려 지표확인
+
+|**개선 전**| **개선 후** |
+|:---:|:--------:|
+|![Locust-Peak-B.png](readmeImages%2FLocust-Peak-B.png)<br>![Locust-Peak-B-Chart.png](readmeImages%2FLocust-Peak-B-Chart.png)|![Locust-Peak-A.png](readmeImages%2FLocust-Peak-A.png)<br>![Locust-Peak-A-Chart.png](readmeImages%2FLocust-Peak-A-Chart.png)|
+
+|**비교항목**|**개선 전**|**개선 후**| **개선효과**   |
+|---|---|---|------------|
+|요청 합계|9,180|37,919| - 4배 증가    |
+|평균 응답 시간(ms)|3992.89|16.67| - 99.6% 감소 |
+|초당 평균 요청 수(RPS)|75.88|313.84| - 4.1배 증가   |
